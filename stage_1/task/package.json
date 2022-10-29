@@ -1,0 +1,21 @@
+{
+  "name": "task 1",
+  "version": "1.0.0",
+  "description": "first task of the hngi9 internship",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "HNG",
+    "Zuri",
+    "I4G"
+  ],
+  "author": "Delight, Fela-Steve",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}
