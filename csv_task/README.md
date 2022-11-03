@@ -8,6 +8,10 @@
 >A new csv file based on the original is created and a sha256 column is added where the generated hash is appended for each respective row
 
 ### How To Use
+>start by cloning this repository
+
+>run the command **npm install**, this installs all the necessary dependencies
+
 >run the command **node index.js path_to_filename secret [Optional]** (where path_to_filename is the route to your csv file)
 
 >The result of this command generates a jsons folder that contains chip-0007 compatible json files of the respected rows in the csv file
