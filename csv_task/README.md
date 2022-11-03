@@ -16,6 +16,6 @@
 
 >run the command **node index.js path_to_filename secret [Optional]** (where path_to_filename is the route to your csv file).
 
->The result of this command generates a jsons folder that contains chip-0007 compatible json files of the respected rows in the csv file.
+>The result of this command generates a jsons folder that contains chip-0007 compatible json files of the respective rows in the csv file.
 
 >It also gives a **filename_output.csv** which contains the included sha56 hashes (where filename is the original name of the csv file).
