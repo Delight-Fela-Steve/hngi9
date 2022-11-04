@@ -7,38 +7,59 @@ const operations = Object.freeze(
     }
 )
 
+const configuration = new Configuration({
+    apiKey: process.env.SECRET,
+});
+const openai = new OpenAIApi(configuration);
+
 exports.operationFunction = async function (req, res) {
     const operation_type = req.body.operation_type;
-    const x = req.body.x;
-    const y = req.body.y;
+    let x = req.body.x;
+    let y = req.body.y;
     let result;
     if (!operation_type) {
-        return res.status(400).json({ message: `operation_type parameter missing` });
+        return res.status(400).json({ message: `operation_type parameter missing`, data: null });
     }
     if (!x) {
-        return res.status(400).json({ message: `x parameter missing` });
+        x = null
     }
     if (!y) {
-        return res.status(400).json({ message: `y parameter missing` });
+        y = null
     }
 
     switch (operation_type) {
         case operations.MULTIPLICATION:
-            result = x * y;
+            result = parseInt(x * y);
             break;
         case operations.ADDDITION:
-            result = x + y;
+            result = parseInt(x + y);
             break;
         case operations.SUBTRACTION:
-            result = x - y;
+            result = parseInt(x - y);
             break
         default:
+            try {
+
+            } catch (error) {
+                console.error(error)
+                return res.status(500).json({ message: "Opps! Please Try Again Later", data: null });
+            }
+            const response = await openai.createCompletion({
+                model: "text-davinci-002",
+                prompt: operation_type,
+                temperature: 0,
+                max_tokens: 256,
+                frequency_penalty: 0,
+                presence_penalty: 0,
+            });
+            result = response.data.choices[0].text.trim()
+            console.log(response.data.choices)
             break;
     }
     let data = {
         slackUsername: "Delight",
         operation_type: `${operation_type}`,
-        result: `${result}`
+        result: result
     }
     return res.status(200).json(data)
 }
