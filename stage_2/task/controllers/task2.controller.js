@@ -53,7 +53,6 @@ exports.operationFunction = async function (req, res) {
                 presence_penalty: 0,
             });
             result = response.data.choices[0].text.trim()
-            console.log(response.data.choices)
             break;
     }
     let data = {
