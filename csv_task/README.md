@@ -7,6 +7,11 @@
 
 >A new csv file based on the original is created and a sha256 column is added where the generated hash is appended for each respective row.
 
+### Requirements
+>You need to have nodejs installed
+
+>You can download from [here](https://nodejs.org/en/download/)
+
 ### How To Use
 >start by cloning this repository
 
